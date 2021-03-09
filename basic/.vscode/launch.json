@@ -8,7 +8,7 @@
             "type": "gdb",
             "request": "attach",
             "name": "Attach to gdbserver",
-            "executable": "${workspaceRoot}/hello-peripheral.axf",
+            "executable": "${workspaceRoot}/Objects/basic.axf",
             "gdbpath": "arm-none-eabi-gdb",
             "target": ":31627",
             "remote": true,
