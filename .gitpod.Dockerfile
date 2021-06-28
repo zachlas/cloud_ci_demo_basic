@@ -1,7 +1,2 @@
-FROM jasonrandrews/armpod
+FROM armswdev/arm-tools:corstone-300-ml-eval-kit-gitpod
 
-# Install custom tools, runtimes, etc.
-# For example "bastet", a command-line tetris clone:
-# RUN brew install bastet
-#
-# More information: https://www.gitpod.io/docs/config-docker/
