@@ -35,15 +35,15 @@ jobs:
       #    password: ${{ secrets.DOCKERHUB_TOKEN }}  
 
       # Pull latest image from Dockerhub and create a container that mounts the $GITHUB_WORKSPACE in /workspace/host. 
-      - name: Create Container from Image
-        run : docker run -i -v ${{ github.workspace }}:/workspace/host --mac-address="00:02:F7:FF:55:55" --name testcontainer -d armswdev/cmsis_tools_m55:latest 
+      #- name: Create Container from Image
+      #  run : docker run -i -v ${{ github.workspace }}:/workspace/host --mac-address="00:02:F7:FF:55:55" --name testcontainer -d armswdev/cmsis_tools_m55:latest 
 
       # Execute CMSIS Build command to build the executable for a Cortex-M55 using Arm Compiler
       - name: Build Basic Project
         run : |
-          docker exec testcontainer cbuild.sh /workspace/host/cloud_ci_demo/basic/basic.Debug.cprj
+          cbuild.sh ${{ github.workspace }}//cloud_ci_demo/basic/basic.Debug.cprj
 
       # Use a Fixed Virtual Platform (instructions set model) to run the application. STDIO is redirected to the host and displayed.
       - name: Run Basic Project
         run : |
-          docker exec testcontainer FVP_Corstone_SSE-300 -q --cyclelimit 100000000 -f /workspace/host/cloud_ci_demo/basic/ARMCM55_config.txt /workspace/host/cloud_ci_demo/basic/Objects/basic.axf  
+          FVP_MPS2_Corstone_SSE-300 -q --cyclelimit 100000000 -f ${{ github.workspace }}/cloud_ci_demo/basic/ARMCM55_config.txt ${{ github.workspace }}/cloud_ci_demo/basic/Objects/basic.axf  
