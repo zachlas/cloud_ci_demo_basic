@@ -16,5 +16,5 @@ int main(int argc, char *argv[]) {
   assert(2 == my_sum(1, 1));
   assert(-2 == my_sum(-1, -1));
   assert(1 == my_sum(0, 0));
-  return(0);
+  return(-1);
 }
